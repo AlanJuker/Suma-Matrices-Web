@@ -109,7 +109,7 @@
             var columnas1 = document.getElementById('num4');
             var id = 1;
 
-            if(filas!=filas1 || columnas!=columnas1){
+            if(filas.value!=filas1.value || columnas.value!=columnas1.value){
                 Swal.fire('La cantidad de filas y columnas es diferente');
             } else{
                 var titulo = document.createElement('h3');
@@ -168,7 +168,7 @@
             var id = 1;
 
 
-            if(filas!=filas1 || columnas!=columnas1){
+            if(filas.value!=filas1.value || columnas.value!=columnas1.value){
                 Swal.fire('La cantidad de filas y columnas es diferente');
             }else{
                 var titulo = document.createElement('h3');
@@ -220,63 +220,68 @@
             var columnas2 = document.getElementById('num4');
             var multiResultado = document.getElementById('resultado');
 
-            var titulo = document.createElement('h3');
-            titulo.textContent = "Multi Resultado";
-            multiResultado.appendChild(titulo);
+            if(columnas.value!=filas2.value){
+                Swal.fire('La cantidad de filas de la Matriz1 debe ser igual a la cantidad de columnas de la Matriz2');
+            }else{
+                var titulo = document.createElement('h3');
+                titulo.textContent = "Multi Resultado";
+                multiResultado.appendChild(titulo);
 
-            const contenedor3 = document.getElementById('contenedor3');
-                contenedor3.setAttribute('class','contenedor');
+                const contenedor3 = document.getElementById('contenedor3');
+                    contenedor3.setAttribute('class','contenedor');
 
-            var respuestaMatriz = [];
+                var respuestaMatriz = [];
 
-            var matriz1 = [];
-            var matriz2 = [];
+                var matriz1 = [];
+                var matriz2 = [];
 
-            var id=1;
-            for(var j=0; j<filas.value; j++){
-                var fila = [];
-                for(var i=0; i<columnas.value; i++){
-                    fila.push(document.getElementById('valor'+id).value);
-                    id++;
-                }
-                matriz1.push(fila);
-            }  
-
-            id=1;
-            for(var j=0; j<filas2.value; j++){
-                var fila = [];
-                for(var i=0; i<columnas2.value; i++){
-                    fila.push(document.getElementById('val'+id).value);
-                    id++;
-                }
-                matriz2.push(fila);
-            }  
-
-            for(var i=0; i<filas.value; i++){
-                var fila = [];
-                for(var j=0; j<columnas2.value; j++){
-                    var aux = 0 ;
-                    fila.push(aux);
-                }
-                respuestaMatriz.push(fila);
-            }
-
-
-            for(var i=0; i< filas.value;i++){
-                var span = document.createElement('span');
-                for(var j=0; j< columnas2.value; j++){
-                    respuestaMatriz[i][j]= 0;
-                    for(var k=0; k<columnas.value; k++){
-                        respuestaMatriz[i][j]+=matriz1[i][k]*matriz2[k][j];
+                var id=1;
+                for(var j=0; j<filas.value; j++){
+                    var fila = [];
+                    for(var i=0; i<columnas.value; i++){
+                        fila.push(document.getElementById('valor'+id).value);
+                        id++;
                     }
-                    var input = document.createElement('input'); 
-                    input.setAttribute('type','text');
-                    input.setAttribute('readonly','');
-                    input.value = respuestaMatriz[i][j];
-                    span.appendChild(input);
+                    matriz1.push(fila);
+                }  
+
+                id=1;
+                for(var j=0; j<filas2.value; j++){
+                    var fila = [];
+                    for(var i=0; i<columnas2.value; i++){
+                        fila.push(document.getElementById('val'+id).value);
+                        id++;
+                    }
+                    matriz2.push(fila);
+                } 
+
+                for(var i=0; i<filas.value; i++){
+                    var fila = [];
+                    for(var j=0; j<columnas2.value; j++){
+                        var aux = 0 ;
+                        fila.push(aux);
+                    }
+                    respuestaMatriz.push(fila);
                 }
-                multiResultado.appendChild(span); 
+
+                for(var i=0; i< filas.value;i++){
+                    var span = document.createElement('span');
+                    for(var j=0; j< columnas2.value; j++){
+                        respuestaMatriz[i][j]= 0;
+                        for(var k=0; k<columnas.value; k++){
+                            respuestaMatriz[i][j]+=matriz1[i][k]*matriz2[k][j];
+                        }
+                        var input = document.createElement('input'); 
+                        input.setAttribute('type','text');
+                        input.setAttribute('readonly','');
+                        input.value = respuestaMatriz[i][j];
+                        span.appendChild(input);
+                    }
+                    multiResultado.appendChild(span); 
+                }
             }
+
+           
         }
         window.addEventListener('load', listeners);
     </script>
@@ -324,8 +329,6 @@
         <div class="matriz" id="resultado">
         </div>
         <div class="matriz" id="restaResultado">
-        </div>
-        <div class="matriz" id="multiResultado">
         </div>
     </div>
 </body>
