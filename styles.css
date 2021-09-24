@@ -1,0 +1,42 @@
+body{
+    font-family: 'Courier New', Courier, monospace;
+    margin-left: 130px;
+    margin-right: 60px;
+    width: 80%;
+    background-color: hsl(198,68%,53%);
+}
+.contenedor{
+    border-radius: 20px;
+    color: #f5f9fa;
+    background: linear-gradient(#323333, #2a2b2b);
+    display: flex;
+    padding: 10px 40px 30px 40px ;
+}
+.elementos{
+    display: block;
+    width: 50%;
+}
+span{
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.matriz{
+    width: 50%;
+}
+.matriz input{
+    width: 30px;
+    height: 30px;
+    margin-right: 4px;
+}
+button{
+    border-radius: 10px;
+    margin-right: 10px;
+}
+input{
+    border-radius: 6px;
+    width: 60px;
+}
+button{
+    padding: 7px;
+}

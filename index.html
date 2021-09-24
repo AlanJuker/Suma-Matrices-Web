@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        var isCreated = false;
+
+        function listeners(){
+            const selectElement = document.getElementById('num1');
+
+            selectElement.addEventListener('change', (event) => {
+                var num3 = document.getElementById('num3');
+                var num1 = document.getElementById('num1');
+                num3.value = num1.value;
+            });
+
+            const selectElement1 = document.getElementById('num2');
+
+            selectElement1.addEventListener('change', (event) => {
+                var num4 = document.getElementById('num4');
+                var num2 = document.getElementById('num2');
+                num4.value = num2.value;
+            });
+        }
+
+        function alerta(){
+            var numero = document.getElementById('num1');
+            alert(numero.value);
+        }
+
+        function crearMatriz1(){
+
+
+            if(isCreated){
+                Swal.fire('Recarga la página para generar una nueva matriz');
+            }else{
+                const matriz1 = document.getElementById('matriz1');
+                const matriz2 = document.getElementById('matriz2');
+
+                var filas = document.getElementById('num1');
+                var columnas = document.getElementById('num2');
+                var id = 1;
+
+                var contenedor2 = document.getElementById('contenedor2');
+                contenedor2.setAttribute('class','contenedor');
+
+                for(var j=0; j<columnas.value; j++){
+                    var span = document.createElement('span');
+                    for(var i=0; i<filas.value; i++){
+                        var input = document.createElement('input'); 
+                        input.setAttribute('type','text');
+                        input.setAttribute('id','valor'+id);
+                        id++;
+                        span.appendChild(input);
+                    }
+                    matriz1.appendChild(span); 
+                }
+
+                id=1;
+                for(var j=0; j<columnas.value; j++){
+                    var span = document.createElement('span');
+                    for(var i=0; i<filas.value; i++){
+                        var input = document.createElement('input'); 
+                        input.setAttribute('type','text');
+                        input.setAttribute('id','val'+id);
+                        id++;
+                        span.appendChild(input);
+                    }
+                    matriz2.appendChild(span); 
+                }
+
+                matriz1.appendChild(document.createElement('br'));
+
+                var sumar = document.createElement('button');
+                var restar = document.createElement('button');
+                sumar.setAttribute('onClick', 'sumarMatrices()');
+                sumar.textContent = "Sumar";
+                restar.textContent = "Restar";
+                restar.setAttribute('onClick', 'restarMatrices()');
+
+                matriz1.appendChild(sumar);
+                matriz1.appendChild(restar);
+                isCreated = true;
+            }
+
+
+        }
+
+
+        function sumarMatrices(){
+            const matrizResultado = document.getElementById('resultado');
+            
+            var filas = document.getElementById('num1');
+            var columnas = document.getElementById('num2');
+            var id = 1;
+
+            var titulo = document.createElement('h3');
+            titulo.textContent = "Suma Resultado";
+            matrizResultado.appendChild(titulo);
+
+            const contenedor3 = document.getElementById('contenedor3');
+            contenedor3.setAttribute('class','contenedor');
+
+            for(var j=0; j<columnas.value; j++){
+                var span = document.createElement('span');
+                for(var i=0; i<filas.value; i++){
+                    var input = document.createElement('input'); 
+                    input.setAttribute('type','text');
+                    input.setAttribute('readonly','');
+                    
+                    var num1 = document.getElementById('valor'+id);
+                    var num2 = document.getElementById('val'+id);
+                    console.log(num1,num2);
+                    input.value = parseInt(num1.value)+parseInt(num2.value);
+                    id++;
+                    span.appendChild(input);
+                }
+                matrizResultado.appendChild(span); 
+            }
+            
+        }
+
+        function restarMatrices(){
+            const matrizResultado = document.getElementById('restaResultado');
+            
+            var filas = document.getElementById('num1');
+            var columnas = document.getElementById('num2');
+            var id = 1;
+
+            var titulo = document.createElement('h3');
+            titulo.textContent = "Resta Resultado";
+            matrizResultado.appendChild(titulo);
+
+            const contenedor3 = document.getElementById('contenedor3');
+            contenedor3.setAttribute('class','contenedor');
+
+            for(var j=0; j<columnas.value; j++){
+                var span = document.createElement('span');
+                for(var i=0; i<filas.value; i++){
+                    var input = document.createElement('input'); 
+                    input.setAttribute('type','text');
+                    input.setAttribute('readonly','');
+                    
+                    var num1 = document.getElementById('valor'+id);
+                    var num2 = document.getElementById('val'+id);
+                    console.log(num1,num2);
+                    input.value = parseInt(num1.value)-parseInt(num2.value);
+                    id++;
+                    span.appendChild(input);
+                }
+                matrizResultado.appendChild(span); 
+            }
+            
+        }
+
+
+
+
+        window.addEventListener('load', listeners);
+    </script>
+      <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="contenedor">
+        <div class="elementos">
+            <h2>Matriz 1</h2>
+            <span> Filas 
+                <input type="number" id="num1" min="1">
+            </span>            
+            <span> Columnas 
+                <input type="number" id="num2" min="1">
+            </span>
+            <button onclick="crearMatriz1()">Generar</button>
+        </div>
+
+        <div class="elementos">
+            <h2>Matriz 2</h2>
+            <span> Filas 
+                <input type="number" id="num3" readonly>
+            </span>            
+            <span> Columnas 
+                <input type="number" id="num4" readonly>
+            </span>
+        </div>
+    </div>
+    <br><br>
+
+    <div id="contenedor2" >
+        <div class="matriz" id="matriz1">
+
+        </div>
+          
+        <div class="matriz" id="matriz2">
+
+        </div>
+    </div>
+    <br><br>
+
+
+    <div id="contenedor3">
+        <div class="matriz" id="resultado">
+        </div>
+        <div class="matriz" id="restaResultado">
+        </div>
+    </div>
+</body>
+</html>
