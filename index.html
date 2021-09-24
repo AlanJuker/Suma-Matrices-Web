@@ -34,17 +34,18 @@
         }
 
         function crearMatriz1(){
-
+            var filas = document.getElementById('num1');
+            var columnas = document.getElementById('num2');
+            var id = 1;
 
             if(isCreated){
                 Swal.fire('Recarga la página para generar una nueva matriz');
+            }else if(columnas.value<=0 || filas.value<=0){
+                Swal.fire('Ingresa un número válido de filas y columnas');
             }else{
                 const matriz1 = document.getElementById('matriz1');
                 const matriz2 = document.getElementById('matriz2');
 
-                var filas = document.getElementById('num1');
-                var columnas = document.getElementById('num2');
-                var id = 1;
 
                 var contenedor2 = document.getElementById('contenedor2');
                 contenedor2.setAttribute('class','contenedor');
@@ -53,7 +54,7 @@
                     var span = document.createElement('span');
                     for(var i=0; i<filas.value; i++){
                         var input = document.createElement('input'); 
-                        input.setAttribute('type','text');
+                        input.setAttribute('type','number');
                         input.setAttribute('id','valor'+id);
                         id++;
                         span.appendChild(input);
@@ -66,7 +67,7 @@
                     var span = document.createElement('span');
                     for(var i=0; i<filas.value; i++){
                         var input = document.createElement('input'); 
-                        input.setAttribute('type','text');
+                        input.setAttribute('type','number');
                         input.setAttribute('id','val'+id);
                         id++;
                         span.appendChild(input);
