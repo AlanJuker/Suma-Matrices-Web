@@ -28,11 +28,6 @@
             });
         }
 
-        function alerta(){
-            var numero = document.getElementById('num1');
-            alert(numero.value);
-        }
-
         function crearMatriz1(){
             var filas = document.getElementById('num1');
             var columnas = document.getElementById('num2');
@@ -94,18 +89,37 @@
 
 
         function sumarMatrices(){
-            const matrizResultado = document.getElementById('resultado');
+            const matrizResultado = document.getElementById('restaResultado');
             
             var filas = document.getElementById('num1');
             var columnas = document.getElementById('num2');
             var id = 1;
 
             var titulo = document.createElement('h3');
-            titulo.textContent = "Suma Resultado";
+            titulo.textContent = "Resta Resultado";
             matrizResultado.appendChild(titulo);
 
             const contenedor3 = document.getElementById('contenedor3');
             contenedor3.setAttribute('class','contenedor');
+
+            for(var j=0; j<columnas.value; j++){
+                var fila = [];
+                for(var i=0; i<filas.value; i++){
+                    fila.push(document.getElementById('valor'+id).value);
+                    id++;
+                }
+                matriz1.push(fila);
+            }  
+
+            id=1;
+            for(var j=0; j<columnas.value; j++){
+                var fila = [];
+                for(var i=0; i<filas.value; i++){
+                    fila.push(document.getElementById('val'+id).value);
+                    id++;
+                }
+                matriz2.push(fila);
+            }  
 
             for(var j=0; j<columnas.value; j++){
                 var span = document.createElement('span');
@@ -113,17 +127,13 @@
                     var input = document.createElement('input'); 
                     input.setAttribute('type','text');
                     input.setAttribute('readonly','');
-                    
-                    var num1 = document.getElementById('valor'+id);
-                    var num2 = document.getElementById('val'+id);
-                    console.log(num1,num2);
-                    input.value = parseInt(num1.value)+parseInt(num2.value);
+
+                    input.value = parseInt(matriz1[j][i])+parseInt(matriz2[j][i]);
                     id++;
                     span.appendChild(input);
                 }
                 matrizResultado.appendChild(span); 
-            }
-            
+            }  
         }
 
         function restarMatrices(){
@@ -141,22 +151,37 @@
             contenedor3.setAttribute('class','contenedor');
 
             for(var j=0; j<columnas.value; j++){
+                var fila = [];
+                for(var i=0; i<filas.value; i++){
+                    fila.push(document.getElementById('valor'+id).value);
+                    id++;
+                }
+                matriz1.push(fila);
+            }  
+
+            id=1;
+            for(var j=0; j<columnas.value; j++){
+                var fila = [];
+                for(var i=0; i<filas.value; i++){
+                    fila.push(document.getElementById('val'+id).value);
+                    id++;
+                }
+                matriz2.push(fila);
+            }  
+
+            for(var j=0; j<columnas.value; j++){
                 var span = document.createElement('span');
                 for(var i=0; i<filas.value; i++){
                     var input = document.createElement('input'); 
                     input.setAttribute('type','text');
                     input.setAttribute('readonly','');
-                    
-                    var num1 = document.getElementById('valor'+id);
-                    var num2 = document.getElementById('val'+id);
-                    console.log(num1,num2);
-                    input.value = parseInt(num1.value)-parseInt(num2.value);
+
+                    input.value = parseInt(matriz1[j][i])-parseInt(matriz2[j][i]);
                     id++;
                     span.appendChild(input);
                 }
                 matrizResultado.appendChild(span); 
-            }
-            
+            }  
         }
 
 
