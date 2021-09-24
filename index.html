@@ -8,8 +8,6 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
-        var matriz1= [];
-        var matriz2= [];
         var isCreated = false;
 
         function listeners(){
@@ -91,6 +89,8 @@
 
 
         function sumarMatrices(){
+            var matriz1 = [];
+            var matriz2 = [];
             const matrizResultado = document.getElementById('resultado');
             
             var filas = document.getElementById('num1');
@@ -139,6 +139,8 @@
         }
 
         function restarMatrices(){
+            var matriz1 = [];
+            var matriz2 = [];
             const matrizResultado = document.getElementById('restaResultado');
             
             var filas = document.getElementById('num1');
@@ -194,7 +196,7 @@
       <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
+    <br>
     <div class="contenedor">
         <div class="elementos">
             <h2>Matriz 1</h2>
