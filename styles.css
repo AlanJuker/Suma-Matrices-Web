@@ -36,6 +36,7 @@ button{
 input{
     border-radius: 6px;
     width: 60px;
+    text-align: center;
 }
 button{
     padding: 7px;
