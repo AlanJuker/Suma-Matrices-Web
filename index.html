@@ -91,8 +91,6 @@
                 matriz1.appendChild(multiplicar);
                 isCreated = true;
             }
-
-
         }
 
 
@@ -285,19 +283,26 @@
         }
         window.addEventListener('load', listeners);
     </script>
-      <link rel="stylesheet" href="styles.css">
+      <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
     <br>
     <div class="contenedor">
         <div class="elementos">
             <h2>Matriz 1</h2>
-            <span> Filas 
-                <input type="number" id="num1" min="1">
-            </span>            
-            <span> Columnas 
-                <input type="number" id="num2" min="1">
-            </span>
+            <div>
+                <span> 
+                    Filas                 
+                    <input type="number" id="num1" min="1">  
+                </span>        
+            </div>  
+            <div>
+            <label> 
+                Columnas                 
+            </label>
+            <input type="number" id="num2" min="1">
+        </div>
+            <br>
             <button onclick="crearMatriz1()">Generar</button>
         </div>
 

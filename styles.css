@@ -1,7 +1,6 @@
 body{
     font-family: 'Courier New', Courier, monospace;
-    margin-left: 130px;
-    margin-right: 60px;
+    margin:auto;
     width: 80%;
     background-color: hsl(198,68%,53%);
 }
